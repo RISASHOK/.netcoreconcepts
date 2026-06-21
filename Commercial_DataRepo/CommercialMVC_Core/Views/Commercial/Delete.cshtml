@@ -1,0 +1,62 @@
+@model Commercial_DataRepo.Repo_Models.Product
+
+@{
+    ViewData["Title"] = "Delete Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1>@ViewData["Title"]</h1>
+            <hr />
+
+            <div class="alert alert-warning" role="alert">
+                <strong>Warning:</strong> Are you sure you want to delete this product? This action cannot be undone.
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Product ID:</strong></label>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="form-control-plaintext">@Model.PId</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Product Name:</strong></label>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="form-control-plaintext">@Model.PName</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Stock Quantity:</strong></label>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="form-control-plaintext">@Model.SQty</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form asp-action="Delete" method="post" style="display: inline;">
+                                <input type="hidden" asp-for="PId" />
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i> Confirm Delete
+                                </button>
+                            </form>
+                            <a asp-action="Details" asp-controller="Commercial" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

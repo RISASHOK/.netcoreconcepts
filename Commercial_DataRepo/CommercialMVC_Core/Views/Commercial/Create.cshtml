@@ -1,0 +1,62 @@
+@model Commercial_DataRepo.Repo_Models.ProductDetail
+
+@{
+    ViewData["Title"] = "Product Purchase Detail";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>@ViewData["Title"]</h2>
+            <hr />
+
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <p>Product ID</p>
+                
+                @Html.EditorFor(p => p.PId)
+                <br />
+                <p>Product Quantity</p>
+                
+                @Html.EditorFor(p => p.PuQty)
+                <br />
+                <br />
+            
+               @*  <div class="form-group mb-3">
+                    <label asp-for="PId" class="form-label"></label>
+                    <input asp-for="PId" class="form-control" type="number" />
+                    <span asp-validation-for="PId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="PuQty" class="form-label"></label>
+                    <input asp-for="PuQty" class="form-control" type="number" />
+                    <span asp-validation-for="PuQty" class="text-danger"></span>
+                </div> *@
+
+             @*    <div class="form-group mb-3">
+                    <label asp-for="PuDate" class="form-label"></label>
+                    <input asp-for="PuDate" class="form-control" type="datetime-local" />
+                    <span asp-validation-for="PuDate" class="text-danger"></span>
+                </div> *@
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Product Stock</button>
+                    <a asp-action="Details" class="btn btn-secondary">Back to Details</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <script>
+        alert("@Html.Raw(ViewBag.Message)");
+        window.location.href = "@Url.Action("Details")";
+    </script>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

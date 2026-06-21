@@ -1,0 +1,19 @@
+﻿@model Employee
+
+<input asp-for="Salary" />
+
+@using (Html.BeginForm())
+{
+    <p>Display Employee</p>
+    @* @Html.DisplayForModel() *@
+    @Html.EditorForModel()
+    @Html.TextBoxFor(model => model.EmpName)
+    @Html.EditorFor(model => model.JoiningDate)
+    @Html.EditorFor(e => e.Salary)
+
+    @* @Html.IdForModel()   *@
+
+    <input type="submit" value="Submit"/>
+
+    @* <input type = "submit" value = "submit" class= "btn btn-primary" /> *@
+}

@@ -1,0 +1,62 @@
+﻿@model List<Nurse_data.Models.Nurse>
+
+@{
+    ViewData["Title"] = "Nurses";
+}
+
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="col-md-6 text-end">
+            <a asp-action="Create" class="btn btn-primary">Add New Nurse</a>
+        </div>
+    </div>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>HId</th>
+                    <th>Department</th>
+                    <th>Gender</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var nurse in Model)
+                {
+                    <tr>
+                        <td>@nurse.Name</td>
+                        <td>@nurse.HId</td>
+                        <td>@nurse.Dept</td>
+                        <td>@nurse.Gender</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@nurse.HId" class="btn btn-sm btn-warning">Edit</a>
+                            <a asp-action="Details" asp-route-id="@nurse.HId" class="btn btn-sm btn-info">Details</a>
+                            <a asp-action="Delete" asp-route-id="@nurse.HId" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            No nurses found. <a asp-action="Create">Create a new nurse record.</a>
+        </div>
+    }
+</div>
+<br />
+<br />
+<form asp-action="Details" method="get">
+    <input type="text" class="form-control" placeholder="Enter nurse Id" name="id"/>
+    <br />
+    <button type="submit" asp-action="Details" class="btn btn-primary">Search</button>
+</form>
+
+

@@ -1,0 +1,79 @@
+@model IEnumerable<Commercial_DataRepo.Repo_Models.Product>
+
+@{
+    ViewData["Title"] = "Products List";
+}
+
+<div class="container-fluid mt-2">
+    <div class="row align-items-center mb-2">
+        <div class="col-md-8">
+            <h5 class="mb-0">Products In Stock</h5>
+        </div>
+        <div class="col-md-4 text-end">
+            <form method="get" class="d-inline">
+                <button type="submit" asp-action="AddDetail" class="btn btn-sm btn-primary">Add New Product</button>
+            </form>
+        </div>
+    </div>
+    
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover mb-2">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Qty</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model)
+                    {
+                        <tr class="@(product.PId == (int?)ViewBag.Pid ? "table-highlight" : "")">
+                            <td>@product.PId</td>
+                            <td>@product.PName</td>
+                            <td>@product.SQty</td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@product.PId" class="btn btn-xs btn-danger" style="padding: 2px 6px; font-size: 0.75rem;">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p class="alert alert-info alert-sm mb-2 py-1">No products found.</p>
+    }
+</div>
+
+<div class="row g-2 mt-1">
+    <div class="col-md-6">
+        <form method="get" class="d-grid">
+            <button type="submit" asp-action="Create" class="btn btn-sm btn-primary">Product Purchase</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <form method="get" class="d-grid">
+            <button type="submit" asp-action="Edit" class="btn btn-sm btn-primary">Sale Product</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    .table-highlight {
+        background-color: #E75480;
+        font-weight: bold;
+    }
+    .alert-sm {
+        font-size: 5.575rem;
+    }
+    body, html {
+        overflow-x: hidden;
+    }
+</style>
+
+

@@ -1,0 +1,59 @@
+@model Nurse_data.Models.Nurse
+
+@{
+    ViewData["Title"] = "Nurse Details";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1>Nurse Details</h1>
+            <hr />
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <strong>ID:</strong>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayFor(model => model.HId)
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <strong>Name:</strong>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayFor(model => model.Name)
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <strong>Department:</strong>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayFor(model => model.Dept)
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <strong>Gender:</strong>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayFor(model => model.Gender)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <a asp-action="Edit" asp-route-id="@Model.HId" class="btn btn-primary">Edit</a>
+                <a asp-action="Delete" asp-route-id="@Model.HId" class="btn btn-danger">Delete</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

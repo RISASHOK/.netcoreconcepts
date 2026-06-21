@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CommercialMVC_Core/CommercialMVC_Core.csproj" />
+  <Project Path="Commercial_DataRepo/Commercial_DataRepo.csproj" />
+</Solution>

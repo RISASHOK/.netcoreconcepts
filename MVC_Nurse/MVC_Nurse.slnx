@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MVC_Nurse/MVC_Nurse.csproj" />
+  <Project Path="Nurse_data/Nurse_data.csproj" Id="64f65e25-9244-44d9-b2a6-d45af1a5b74b" />
+</Solution>
